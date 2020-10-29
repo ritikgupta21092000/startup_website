@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Sign Up Form</title>
+  <%- include ("partials/link.ejs") -%>
+  <link rel="stylesheet" href="css/signin.css">
+</head>
+
+<body>
+  <%- include ("partials/navbar.ejs"); -%>
+  <div class="sign-in-form">
+    <img src="images/user-icon.png" alt="user-icon">
+    <h1>Sign In Here</h1>
+    <form action="/signin" method="post">
+      <input type="email" name="emailId" class="input-box" placeholder="Your Email">
+      <input type="password" name="password" class="input-box" placeholder="Your Password"><br>
+      <button type="submit" class="signin-btn">Sign in</button>
+      <hr>
+      <p class="or">Or</p>
+      <p>Create a new account ? <a href="/signup">Sign up</a></p>
+    </form>
+  </div>
+
+  <!-- Footer Content -->
+
+  <%- include ("partials/footer.ejs"); -%>
+  <!-- End of footer -->
+</body>
+
+</html>

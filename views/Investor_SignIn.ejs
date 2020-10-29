@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Sign Ip Form</title>
+    <%- include ("partials/link.ejs"); -%>
+    <link rel="stylesheet" href="css/Investor_SignIn.css">
+
+    <script type="text/javascript">
+
+        function validate() {
+
+            var email = document.getElementById('email');
+            var pass = document.getElementById('pass');
+
+            if (email.value == null || email.value == " ") {
+                document.getElementById('Email').innerHTML = "* This field is required";
+                return false;
+            }
+            if (pass.value == null || pass.value == " ") {
+                document.getElementById('Pass').innerHTML = "* This field is required";
+                return false;
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <%- include ("partials/navbar.ejs"); -%>
+    <div class="investorSignin">
+        <div class="sign-in-form">
+            <img src="images/user-icon.png" class="siginin-img" alt="user-icon">
+            <h1>Sign In Here</h1>
+            <form action="/investorSignin" onsubmit="return validate()" method="POST">
+                <input id="email" type="email" name="username" class="input-box" placeholder="Your Email"><br>
+                <span id="Email"></span><br>
+                <input id="pass" type="password" name="password" class="input-box" placeholder="Your Password"><br>
+                <span id="Pass"></span><br>
+                <button type="submit" class="signin-btn">Sign in</button>
+                <hr>
+                <p class="or">Or</p>
+                <p>Create a new account ? <a href="/invest">Sign Up</a></p>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

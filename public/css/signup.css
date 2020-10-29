@@ -1,0 +1,55 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: #ffffd2;
+  background-size: cover;
+}
+.sign-up-form {
+  background: #fff;
+  padding: 20px;
+  margin: 10% auto 0;
+  width: 400px;
+  text-align: center;
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.3);
+}
+img {
+  width: 70px;
+}
+.input-box {
+  border-radius: 20px;
+  padding: 10px;
+  width: 280px;
+  margin: 10px 0;
+  border: 1px solid #999;
+  outline: none;
+}
+#divStudent {
+  width: 100px;
+  display: -webkit-inline-box;
+  margin: 0 10px;
+}
+.or {
+  margin: -19px auto 0;
+  width: 30px;
+  background: #fff;
+}
+.signup-btn {
+  background-color: #1c8adb;
+  color: #fff;
+  width: 50%;
+  border-radius: 20px;
+  padding: 10px;
+  border: 2px solid rgba(122, 111, 211, 0);
+  outline: none;
+  margin: 10px 0;
+  font-size: 15px;
+  cursor: pointer;
+}
+.signup-btn:focus {
+  background-color: mediumblue;
+}
+hr {
+  margin-top: 20px;
+  width: 80%;
+}

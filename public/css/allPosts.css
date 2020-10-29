@@ -1,0 +1,51 @@
+/* .card {
+  margin: 100px 20px 20px 20px;
+  background-color: #fcdada;
+  border-radius: 10px;
+  box-shadow: 1px 1px 3px 2px;
+}
+.card-Header {
+  background-color: #fcdada;
+  text-align: center;
+  padding: 20px;
+}
+.card-body {
+  background-color: #fcf1f1;
+}
+.card-body h6 {
+  margin-bottom: 20px;
+}
+.card-body p {
+  margin: 0;
+}
+.footer {
+  padding: 20px;
+  text-align: center;
+  background-color: #bbbfca;
+}
+.hr_row {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+} */
+
+.card {
+  margin-top: 20px;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.2em;
+}
+
+.card-text {
+  color: black;
+}
+
+.phoneNo,
+.name {
+  display: inline;
+}
+
+.name {
+  margin-right: 160px;
+}

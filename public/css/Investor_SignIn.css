@@ -1,0 +1,76 @@
+.investorSignin {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-image: url("../images/bg5.jpg");
+  background-size: cover;
+}
+.sign-in-form {
+  background: rgba(0, 0, 0, 0.55);
+  padding: 20px;
+  margin: 8% auto 0;
+  width: 400px;
+  text-align: center;
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+}
+.sign-in-form h1 {
+  color: #1c8adb;
+  margin-bottom: 30px;
+}
+.input-box {
+  border-radius: 5px;
+  padding: 10px;
+  width: 280px;
+  margin: 10px 0;
+  border: none;
+  border-bottom: 1px solid #999;
+  outline: none;
+}
+.signin-btn {
+  background-color: #1c8adb;
+  color: #fff;
+  width: 70%;
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 15px;
+  margin: 10px 0;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.signin-btn:hover {
+  background-color: mediumblue;
+}
+a {
+  text-decoration: none;
+  color: rgb(167, 167, 241);
+}
+a:hover {
+  color: rgb(212, 212, 245);
+}
+hr {
+  margin-top: 20px;
+  width: 80%;
+}
+.or {
+  background: #fff;
+  width: 30px;
+  margin: -19px auto 10px;
+  color: black;
+}
+.siginin-img {
+  width: 90px;
+  border-radius: 100%;
+}
+p {
+  color: #fff;
+}
+span {
+  background-color: #fff;
+  color: red;
+  position: relative;
+  bottom: 10px;
+  right: 70px;
+}

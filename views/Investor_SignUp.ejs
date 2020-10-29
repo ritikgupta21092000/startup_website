@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Sign Up Form</title>
+    <%- include ("partials/link.ejs"); -%>
+    <link rel="stylesheet" href="css/Investor_SignUp.css">
+
+    <script type="text/javascript">
+        function vallidate() {
+
+            var fname = document.getElementById('fname');
+            var lname = document.getElementById('lname');
+            var mname = document.getElementById('mname');
+            var oname = document.getElementById('oname');
+            var email = document.getElementById('email');
+            var contact = document.getElementById('contact');
+            var pass = document.getElementById('pass');
+            var confirmpass = document.getElementById('confirmpass');
+
+            if (fname.value == "" || fname.value == " ") {
+                document.getElementById('Fname').innerHTML = "* This field is required";
+                return false;
+            }
+            if (mname.value == "" || mname.value == " ") {
+                document.getElementById('Mname').innerHTML = "* This field is required";
+                return false;
+            }
+            if (lname.value == "" || lname.value == " ") {
+                document.getElementById('Lname').innerHTML = "* This field is required";
+                return false;
+            }
+            if (oname.value == "" || oname.value == " ") {
+                document.getElementById('Oname').innerHTML = "* This field is required";
+                return false;
+            }
+            if (email.value == "" || email.value == " ") {
+                document.getElementById('Email').innerHTML = "* This field is required";
+                return false;
+            }
+            if (contact.value == "" || contact.value == " ") {
+                document.getElementById('Contact').innerHTML = "* This field is required";
+                return false;
+            }
+            if (pass.value == "" || pass.value == " ") {
+                document.getElementById('Pass').innerHTML = "* This field is required";
+                return false;
+            }
+            if (confirmpass.value == "" || confirmpass.value == " ") {
+                document.getElementById('Confirmpass').innerHTML = "* This field is required";
+                return false;
+            }
+            if (confirmpass.value != pass.value) {
+                document.getElementById('Confirmpass').innerHTML = "* Password doesn't match";
+                return false;
+            }
+
+        }
+    </script>
+
+</head>
+
+<body>
+    <%- include ("partials/navbar.ejs"); -%>
+    <div class="investorSignup">
+
+        <div class="sign-up-form">
+            <img src="images/user-icon.png" class="user-icon-img" alt="user-icon">
+            <h1>Sign Up Here</h1>
+            <form action="/investorSignup" onsubmit="return vallidate()" method="POST">
+                <input type="text" id="fname" name="firstName" class="input-box" placeholder="First Name"><br>
+                <span id="Fname"></span><br>
+                <input type="text" id="mname" name="middleName" class="input-box" placeholder="Middle Name"><br>
+                <span id="Mname"></span><br>
+                <input type="text" id="lname" name="lastName" class="input-box" placeholder="Last Name"><br>
+                <span id="Lname"></span><br>
+                <input type="text" id="oname" name="organisationName" class="input-box"
+                    placeholder="Organisation Name"><br>
+                <span id="Oname"></span><br>
+                <input type="text" id="contact" name="phoneNo" class="input-box" pattern="[0-9]{10}"
+                    placeholder="Contact No."><br>
+                <span id="Contact"></span><br>
+                <input type="email" name="emailId" id="email" class="input-box" placeholder="Email"><br>
+                <span id="Email"></span><br>
+                <input type="password" id="pass" class="input-box" placeholder="Password"><br>
+                <span id="Pass"></span><br>
+                <input type="password" name="password" id="confirmpass" class="input-box"
+                    placeholder="Confirm Password"><br>
+                <span id="Confirmpass"></span><br>
+                <button type="submit" class="signup-btn">Sign Up</button>
+                <hr>
+                <p class="or">Or</p>
+                <p id="p">Do you have an account ? <a href="/investorSignin">Sign in</a></p>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

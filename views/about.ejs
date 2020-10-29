@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Startups</title>
+  <%- include ("partials/link.ejs"); -%>
+
+  <style>
+    .image-div {
+      position: relative;
+      text-align: center;
+      color: white;
+      opacity: 0.8;
+    }
+
+    .image-div-title {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 3em;
+    }
+
+    .middle-content {
+      height: 100%;
+      margin-top: 30px;
+    }
+
+    .left-card {
+      box-shadow: 5px 5px 5px 3px #888888;
+      margin-right: 8px;
+    }
+
+    .card-img {
+      width: 100%;
+      height: 100%;
+      border-right: 3px solid green;
+    }
+
+    .left-card-body {
+      width: 100%;
+      height: 100%;
+      text-align: left;
+      padding-left: 35px;
+      /* background-color: #F1F1F1; */
+      border-right: 3px solid green;
+    }
+
+    .card-title {
+      font-size: 2.1em;
+      font-weight: normal;
+    }
+
+    .title-2 {
+      font-size: 1.5em;
+    }
+
+    .card-footer {
+      font-size: 1.5em;
+    }
+
+    .card-footer a {
+      padding: 15px;
+      color: black;
+    }
+
+    .right-card {
+      width: 100%;
+      margin-left: 30px;
+      background-color: black;
+      color: white;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <%- include ("partials/navbar.ejs"); -%>
+
+  <div class="fluid-container image-div" style="margin-top: 70px;">
+    <img src="images/first.png" alt="first" width="100%" height="280px">
+    <h4 class="image-div-title">About Us</h4>
+  </div>
+
+  <div class="middle-content">
+    <div class="row no-gutters">
+      <div class="col-md-6">
+        <div class="card mb-3 left-card" style="max-width: 100%;">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <img src="images/Ritesh.jpg" class="card-img" alt="Ritesh">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body left-card-body">
+                <h5 class="card-title">Ritesh Vijay Dewoolkar</h5>
+                <h5 class="card-title title-2">Blogger & Web Developer</h5>
+                <div class="card-text">
+                  <p class="">
+                    Phone: <br>
+                    8806414571
+                  </p>
+                  <p>
+                    Email: <br>
+                    riteshdewoolkar@gmail.com
+                  </p>
+                </div>
+
+              </div>
+
+              <div class="card-footer">
+                <a href=""><i class="fab fa-instagram"></i></a>
+                <a href="mailto:riteshdewoolkar@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href=""><i class="fab fa-linkedin-in"></i></a>
+                <a href=""><i class="fab fa-twitter"></i></a>
+                <a href=""><i class="fab fa-facebook"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card mb-3 left-card" style="max-width: 100%;">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <img src="images/rinkesh.jpeg" class="card-img" alt="Ritesh">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body left-card-body">
+                <h5 class="card-title">Rinkesh Kumavat</h5>
+                <h5 class="card-title title-2">Web Designer & Web Developer</h5>
+                <div class="card-text">
+                  <p class="">
+                    Phone: <br>
+                    9967762318
+                  </p>
+                  <p>
+                    Email: <br>
+                    rinkesh2001kumawat@gmail.com
+                  </p>
+                </div>
+
+              </div>
+
+              <div class="card-footer">
+                <a href=""><i class="fab fa-instagram"></i></a>
+                <a href="mailto:rinkesh2001kumawat@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href=""><i class="fab fa-linkedin-in"></i></a>
+                <a href=""><i class="fab fa-twitter"></i></a>
+                <a href=""><i class="fab fa-facebook"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-md-6" style="margin-top: 50px; margin-bottom: 50px;">
+        <div class="card mb-3 left-card" style="max-width: 100%;">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <img src="images/ritik-pic.jpg" class="card-img" alt="Ritesh">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body left-card-body">
+                <h5 class="card-title">Ritik Sunil Gupta</h5>
+                <h5 class="card-title title-2">Web Developer</h5>
+                <div class="card-text">
+                  <p class="">
+                    Phone: <br>
+                    7666004769
+                  </p>
+                  <p>
+                    Email: <br>
+                    guptaritik349@gmail.com
+                  </p>
+                </div>
+
+              </div>
+
+              <div class="card-footer">
+                <a href=""><i class="fab fa-instagram"></i></a>
+                <a href="mailto:guptaritik349@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href=""><i class="fab fa-linkedin-in"></i></a>
+                <a href=""><i class="fab fa-twitter"></i></a>
+                <a href=""><i class="fab fa-facebook"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Content -->
+
+  <%- include ("partials/footer.ejs"); -%>
+  <!-- End of footer -->
+
+</body>
+
+</html>

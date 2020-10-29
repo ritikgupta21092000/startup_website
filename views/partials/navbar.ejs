@@ -1,0 +1,85 @@
+<!-- Main Navbar -->
+<nav class="navbar navbar-dark navbar-expand-sm fixed-top">
+  <a class="navbar-brand" href="#" mr-auto><img src="images/startup-india-logo.png" class="img-fluid " height="40"
+      width="70"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="Navbar">
+
+    <!-- Main Navbar Items-->
+    <ul class="navbar-nav mr-auto">
+      <li class="navbar-item active"><a class="nav-link" href="/"><i class="fas fa-home"></i> Home</a></li>
+      <li class="navbar-item"><a class="nav-link" href="/about"><i class="fas fa-info"></i> About</a></li>
+      <li class="navbar-item"><a class="nav-link" href="/contact"><i class="fas fa-address-card"></i> Contact</a>
+      </li>
+      <li class="navbar-item"><a class="nav-link" href="/invest"><i class="fas fa-coins"></i> Invest</a></li>
+      <li class="navbar-item"><a class="nav-link" href="https://www.creativomentes.com" target="_blank"><i
+            class="fas fa-blog"></i> Blog</a></li>
+      <% if (foundUser) { %>
+      <li class="navbar-item"><a class="nav-link" data-toggle="modal" data-target="#postProject" href="#"><i
+            class="fas fa-laptop-code"></i> Post Project</a></li>
+      <% } %>
+
+    </ul>
+
+
+    <!-- NavLink For Login -->
+    <div class="navbar-text">
+      <a id="login" class="nav-link mr-3" href="/login">
+        <i class="fas fa-user-circle"></i> Login
+      </a>
+    </div><br>
+
+    <!-- Navlink For More -->
+    <div class="navbar-text">
+      <a id="more">
+        More <i class="fas fa-chevron-down mr-4"></i>
+      </a>
+    </div>
+
+    <% if (foundUser) { %>
+    <div class="navbar-text">
+      <a id="" class="nav-link mr-3" href="#">
+        <i class="fas fa-user-circle"></i> <%= foundUser %>
+      </a>
+    </div><br>
+    <div class="navbar-text">
+      <a id="" class="nav-link mr-3" href="/logout">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </a>
+    </div><br>
+    <% } %>
+
+
+  </div>
+  </div>
+</nav>
+
+<div class="modal" id="postProject" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Post a Project</h5>
+      </div>
+      <div class="modal-body">
+        <form action="/postProject" method="POST">
+
+          <div class="form-group">
+            <label for="projectName">Project Name</label>
+            <input type="text" class="form-control" name="projectName" id="projectName" aria-describedby="emailHelp">
+          </div>
+          <div class="form-group">
+            <label for="projectDescription">Project Description</label>
+            <input type="text" class="form-control" name="projectDescription" id="projectDescription">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Post</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

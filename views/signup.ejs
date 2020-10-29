@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Sign Up Form</title>
+  <%- include ("partials/link.ejs") -%>
+  <link rel="stylesheet" href="css/signup.css">
+</head>
+
+<body>
+  <%- include ("partials/navbar.ejs"); -%>
+  <div class="sign-up-form">
+    <img src="images/user-icon.png" alt="user-icon">
+    <h1>Sign Up Here</h1>
+    <form action="/register" method="post">
+      <input type="text" name="fullName" class="input-box" placeholder="Full Name">
+      <input type="text" name="phoneNo" class="input-box" pattern="[0-9]{10}" placeholder="Contact No.">
+      <input type="email" name="emailId" class="input-box" placeholder="Your Email"><br>
+      <div id="divStudent">
+        <label>Student</label>
+        <input type="radio" name="type" value="student">
+      </div>
+      <label>Start Up</label>
+      <input type="radio" name="type" value="startup"><br>
+      <input type="text" name="organisationName" class="input-box" placeholder="Organisation Name">
+      <input type="password" class="input-box" placeholder="Your Password"><br>
+      <input type="password" name="password" class="input-box" placeholder="Confirm Password"><br>
+      <button type="submit" class="signup-btn">Sign Up</button>
+      <hr>
+      <p class="or">Or</p>
+      <p>Do you have an account ? <a href="/login">Sign in</a></p>
+    </form>
+  </div>
+
+  <!-- Footer Content -->
+
+  <%- include ("partials/footer.ejs"); -%>
+  <!-- End of footer -->
+
+</body>
+
+</html>

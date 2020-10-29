@@ -1,0 +1,81 @@
+.investorSignup {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-image: url("../images/bg5.jpg");
+  background-size: cover;
+}
+.sign-up-form {
+  background: rgba(0, 0, 0, 0.55);
+  padding: 20px;
+  margin: 7% auto 0;
+  width: 400px;
+  text-align: center;
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+  font-family: sans-serif;
+}
+.user-icon-img {
+  width: 90px;
+  border-radius: 100%;
+}
+.input-box {
+  border-radius: 5px;
+  padding: 10px;
+  width: 280px;
+  margin: 10px 0;
+  border: none;
+  border-bottom: 1px solid #999;
+  outline: none;
+}
+#divStudent {
+  width: 100px;
+  display: -webkit-inline-box;
+  margin: 0 10px;
+}
+.or {
+  margin: -19px auto 0;
+  width: 30px;
+  background: #fff;
+  font-size: 20px;
+}
+.signup-btn {
+  background-color: #1c8adb;
+  color: #fff;
+  width: 50%;
+  border-radius: 20px;
+  padding: 10px;
+  border: 2px solid rgba(122, 111, 211, 0);
+  margin: 10px 0;
+  font-size: 15px;
+  cursor: pointer;
+  outline: none;
+}
+.signup-btn:hover {
+  background-color: mediumblue;
+}
+hr {
+  margin-top: 20px;
+  width: 80%;
+}
+h1 {
+  color: #fff;
+}
+#p {
+  color: #fff;
+}
+a {
+  text-decoration: none;
+  color: rgb(167, 167, 241);
+}
+a:hover {
+  color: rgb(212, 212, 245);
+}
+span {
+  color: red;
+  position: relative;
+  bottom: 10px;
+  right: 70px;
+  background-color: #fff;
+}
