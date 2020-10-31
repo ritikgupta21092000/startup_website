@@ -89,6 +89,34 @@ app.get("/investorData", (req, res) => {
   });
 });
 
+app.get("/investorDashboard", (req, res) => {
+  res.render("investor-dashboard", { foundUser: req.session.username, investorName: req.session.investorName });
+});
+
+app.get("/investorAppliedProject", (req, res) => {
+  Project.find({ "investAmount.investorId": req.session.investorId, isUserApproved: false })
+    .populate("investAmount.investorId")
+    .populate("userId")
+    .then(foundDocument => {
+      res.render("investorAppliedProject", { foundDocument, foundUser: req.session.username, investorName: req.session.investorName });
+    })
+    .catch(error => {
+      console.log(error);
+    });
+});
+
+app.get("/investorApprovedProject", (req, res) => {
+  Project.find({ "investAmount.investorId": req.session.investorId, isUserApproved: true })
+    .populate("investAmount.investorId")
+    .populate("userId")
+    .then(foundDocument => {
+      res.render("investorAppliedProject", { foundDocument, foundUser: req.session.username, investorName: req.session.investorName });
+    })
+    .catch(error => {
+      console.log(error);
+    });
+});
+
 app.get("/logout", (req, res) => {
   req.session.destroy((err) => {
     if (err) {
@@ -183,6 +211,7 @@ app.post("/postProject", (req, res) => {
   var data = {
     projectName: req.body.projectName,
     projectDescription: req.body.projectDescription,
+    projectUrl: req.body.projectUrl,
     userId: userId
   };
   Project.create(data, (error, insertedProject) => {

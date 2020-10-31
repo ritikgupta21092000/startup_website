@@ -29,7 +29,11 @@ const projectSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: User
   },
-  investAmount: [biddingSchema]
+  investAmount: [biddingSchema],
+  isUserApproved: {
+    type: Boolean,
+    default: false
+  }
 });
 
 const Project = new mongoose.model("project", projectSchema);

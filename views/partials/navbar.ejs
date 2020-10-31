@@ -19,17 +19,21 @@
       <% if (foundUser) { %>
       <li class="navbar-item"><a class="nav-link" data-toggle="modal" data-target="#postProject" href="#"><i
             class="fas fa-laptop-code"></i> Post Project</a></li>
+      <% } else if (investorName) { %>
+      <li class="navbar-item"><a class="nav-link" href="/investorDashboard"><i class="fas fa-blog"></i> Dashboard</a>
+      </li>
       <% } %>
-
     </ul>
 
 
     <!-- NavLink For Login -->
+    <% if (!foundUser && !investorName) { %>
     <div class="navbar-text">
       <a id="login" class="nav-link mr-3" href="/login">
         <i class="fas fa-user-circle"></i> Login
       </a>
     </div><br>
+    <% } %>
 
     <!-- Navlink For More -->
     <div class="navbar-text">
@@ -83,6 +87,10 @@
           <div class="form-group">
             <label for="projectDescription">Project Description</label>
             <input type="text" class="form-control" name="projectDescription" id="projectDescription">
+          </div>
+          <div class="form-group">
+            <label for="projectUrl">Project Url</label>
+            <input type="text" class="form-control" name="projectUrl" id="projectUrl">
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

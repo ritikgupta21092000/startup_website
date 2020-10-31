@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Startup India</title>
+  <%- include ("partials/link.ejs"); -%>
+</head>
+
+<body>
+  <%- include ("partials/navbar.ejs"); -%>
+  <table class="table table-striped" style="margin-top: 100px;">
+    <thead>
+      <tr>
+        <th>Project Owner</th>
+        <th>Project Name</th>
+        <th>Project Description</th>
+        <th>Project Url</th>
+        <th>Bid Amount</th>
+        <th>Proposal</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% foundDocument.forEach(element => { %>
+      <tr>
+        <td><%= element.userId.fullName %></td>
+        <td><%= element.projectName %> </td>
+        <td><%= element.projectDescription %> </td>
+        <td><%= element.projectUrl %> </td>
+        <td><%= element.investAmount[0].amount %> </td>
+        <td><%= element.investAmount[0].proposal %> </td>
+        <% if (element.isUserApproved) { %>
+        <td>Approved</td>
+        <% } else { %>
+        <td>Pending</td>
+        <% } %>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</body>
+
+</html>
