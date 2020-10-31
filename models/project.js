@@ -1,5 +1,19 @@
 const mongoose = require("mongoose");
 const User = require("./user");
+const InvestorUser = require("./investorUser");
+
+const biddingSchema = new mongoose.Schema({
+  amount: {
+    type: Number
+  },
+  proposal: {
+    type: String
+  },
+  investorId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: InvestorUser
+  }
+});
 
 const projectSchema = new mongoose.Schema({
   projectName: {
@@ -14,7 +28,8 @@ const projectSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: User
-  }
+  },
+  investAmount: [biddingSchema]
 });
 
 const Project = new mongoose.model("project", projectSchema);

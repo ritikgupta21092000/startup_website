@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<head>
+  <!-- Meta Tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <!-- CSS Links -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/f33983bb23.js" crossorigin="anonymous"></script>
+
+  <title>Startup India</title>
+  <%- include ("partials/link.ejs"); -%>
+</head>
+
+<body>
+  <%- include ("partials/navbar.ejs"); -%>
+  <!-- 1st Modal ,Login Modal -->
+  <div id="investModal" class="modal fade" role="dialog">
+    <div class="modal-dialog" role="content">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <!-- Modal Header-->
+        <div class="modal-header bg-primary text-white">
+          <h4 class="modal-title">Place a Bid</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <!-- Modal Body-->
+        <div class="modal-body">
+          <form action="/placeBid" method="POST">
+            <div class="form-row">
+              <div class="form-group col-sm-6">
+                <input type="hidden" name="projectId" id="projectId">
+                <input type="text" class="form-control form-control-sm mr-1" id="fullName" placeholder="Enter Name"
+                  required>
+              </div>
+              <div class="form-group col-sm-6">
+                <input type="email" class="form-control form-control-sm mr-1" id="emailId" placeholder="Enter Email"
+                  required>
+              </div>
+            </div>
+            <div class="form-row mt-1">
+              <div class="col-6 col-md-6">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Rs</span>
+                  </div>
+                  <input type="number" name="amount" class="form-control mr-1" placeholder="Place your Bid">
+                </div>
+              </div>
+              <div class="col-6 col-md">
+
+              </div>
+            </div>
+            <div class="form-row mt-3">
+              <textarea name="proposal" class="col-sm-10 ml-1 form-control form-control-sm mr-1"
+                placeholder="Enter Proposal" required></textarea>
+            </div>
+            <div class="form-row mt-3">
+              <button type="button" class="btn btn-secondary btn-sm ml-auto" data-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-primary btn-sm ml-1">Place</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="container" style="margin-top: 60px;">
+    <div class="row">
+      <div class="col-12 col-sm-3">
+        <div class="card mt-5">
+          <div class="card-body bg-light">
+            <h5>Filter</h5>
+            <!-- Budget -->
+            <label id="BudgetofProj">Budget(Rs):</label>
+            <select id="Budget">
+              <option>...</option>
+              <option>1lakhs - 2lakhs</option>
+              <option>3lakhs - 4lakhs</option>
+              <option>4lakhs - 5lakhs</option>
+              <option>5lakhs+</option>
+            </select><br>
+            <!-- end of budget filter -->
+            <!-- Project Type -->
+            <label id="TypeofProj">Type:</label><br>
+            <select id="Type">
+              <option>...</option>
+              <option id="Business">Business</option>
+              <option id="Web Development">Web Development</option>
+              <option id="Content Writing">Content Writing</option>
+              <option id="SEO Optimization">SEO Optimization</option>
+            </select><br>
+            <!-- End of project type -->
+            <a href="#" class="float-right">See All</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm">
+        <!-- 1st Project Card -->
+        <% projects.forEach(element => { %>
+        <div class="card mt-5">
+          <div class="card-header bg-info">
+            <h3 class="text-white"><%= element.userId.fullName %> </h3>
+          </div>
+          <div class="card-body">
+            <p><b>Project Title</b>: <%= element.projectName %> </p>
+            <p><b>Project Description</b>: <%= element.projectDescription %> </p>
+            <p><b>Email</b>: <%= element.userId.username %> </p>
+            <p><b>Website</b>: <a href="<%= element.url %> "><%= element.url %> </a></p>
+
+            <% flag = 0 %>
+            <% if (element.investAmount.length) { %>
+            <% element.investAmount.forEach(item => { %>
+            <% if (item.investorId == investorId) { %>
+            <p class="float-right"><i class="fas fa-check-circle"></i> Bid Placed Successfully</p>
+            <% flag = 1 %>
+            <% } %>
+            <% }); %>
+            <% } %>
+
+            <% if (flag == 0) { %>
+
+            <button class="btn btn-primary float-right" data-target="#investModal" data-toggle="modal"
+              onclick="fillUserData('<%= element._id %>');">Invest</button>
+            <% } %>
+          </div>
+        </div>
+        <% }); %>
+        <!-- End of 3rd Card -->
+        <!-- Pagination -->
+        <div id="pagination" class="mt-2">
+          <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1">Prev</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#">Next</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<!-- Js jquery,popper links -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+  integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+  integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+<script>
+  function fillUserData(id) {
+
+    fetch("http://localhost:3000/investorData", {
+      method: "get"
+    })
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("fullName").value = data.foundInvestor.fullName;
+        document.getElementById("fullName").disabled = true;
+        document.getElementById("emailId").value = data.foundInvestor.username;
+        document.getElementById("emailId").disabled = true;
+        document.getElementById("projectId").value = id;
+      })
+      .catch(error => console.log(error));
+  }
+</script>
+
+</html>

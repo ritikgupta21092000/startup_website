@@ -21,46 +21,72 @@ mongooose.connect("mongodb://localhost:27017/startupsDB", {
   useUnifiedTopology: true
 });
 
+mongooose.connection.on("connected", () => {
+  console.log("Successfully Connected to Database");
+});
+
+mongooose.connection.on("error", (error) => {
+  console.log("Error in Connecting to database: ", error);
+});
+
 const User = require("./models/user");
 const InvestorUser = require("./models/investorUser");
 const Project = require("./models/project");
 
 app.get("/", (req, res) => {
-  res.render("index", { foundUser: req.session.username });
+  res.render("index", { foundUser: req.session.username, investorName: req.session.investorName });
 });
 
 app.get("/login", (req, res) => {
-  res.render("Signin", { foundUser: req.session.username });
+  res.render("Signin", { foundUser: req.session.username, investorName: req.session.investorName });
 });
 
 app.get("/signup", (req, res) => {
-  res.render("signup", { foundUser: req.session.username });
+  res.render("signup", { foundUser: req.session.username, investorName: req.session.investorName });
 });
 
 app.get("/contact", (req, res) => {
-  res.render("contact", { foundUser: req.session.username });
+  res.render("contact", { foundUser: req.session.username, investorName: req.session.investorName });
 });
 
 app.get("/about", (req, res) => {
-  res.render("about", { foundUser: req.session.username });
+  res.render("about", { foundUser: req.session.username, investorName: req.session.investorName });
 });
 
 app.get("/invest", (req, res) => {
-  res.render("Investor_SignUp", { foundUser: req.session.username });
+  if (req.session.investorId) {
+    res.redirect("/allProjects");
+  } else {
+    res.render("Investor_SignUp", { foundUser: req.session.username, investorName: req.session.investorName });
+  }
 });
 
 app.get("/investorSignin", (req, res) => {
-  res.render("Investor_SignIn", { foundUser: req.session.username });
+  res.render("Investor_SignIn", { foundUser: req.session.username, investorName: req.session.investorName });
 });
 
 app.get("/allProjects", (req, res) => {
-  Project.find({})
-    .populate("userId")
-    .then((foundProjects) => {
-      res.render("allPosts", { foundUser: req.session.username, projects: foundProjects });
-    }).catch((err) => {
+  if (req.session.investorId) {
+    Project.find({})
+      .populate("userId")
+      .then((foundProjects) => {
+        res.render("invest-in-project", { foundUser: req.session.username, projects: foundProjects, investorId: req.session.investorId, investorName: req.session.investorName });
+      }).catch((err) => {
+        console.log(err);
+      });
+  } else {
+    res.redirect("/investorSignin");
+  }
+});
+
+app.get("/investorData", (req, res) => {
+  InvestorUser.findOne({ _id: req.session.investorId }, (err, foundInvestor) => {
+    if (err) {
       console.log(err);
-    });
+    } else {
+      res.send({ foundInvestor });
+    }
+  });
 });
 
 app.get("/logout", (req, res) => {
@@ -142,6 +168,8 @@ app.post("/investorSignin", (req, res) => {
       console.log(error);
     } else {
       if (foundInvestorUser) {
+        req.session.investorId = foundInvestorUser._id;
+        req.session.investorName = foundInvestorUser.fullName;
         res.redirect("/allProjects");
       } else {
         res.send({ signin: false });
@@ -162,6 +190,22 @@ app.post("/postProject", (req, res) => {
       console.log(error);
     } else {
       res.redirect("/");
+    }
+  });
+});
+
+app.post("/placeBid", (req, res) => {
+  const data = {
+    amount: req.body.amount,
+    proposal: req.body.proposal,
+    investorId: req.session.investorId
+  };
+  const projectId = new ObjectId(req.body.projectId);
+  Project.findOneAndUpdate({ _id: projectId }, { $push: { investAmount: data } }, (err, foundProject) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.redirect("/allProjects");
     }
   });
 });
