@@ -19,8 +19,12 @@
       <% if (foundUser) { %>
       <li class="navbar-item"><a class="nav-link" data-toggle="modal" data-target="#postProject" href="#"><i
             class="fas fa-laptop-code"></i> Post Project</a></li>
+      <li class="navbar-item"><a class="nav-link" href="/userDashboard"><i class="fas fa-tachometer-alt"></i>
+          Dashboard</a>
+      </li>
       <% } else if (investorName) { %>
-      <li class="navbar-item"><a class="nav-link" href="/investorDashboard"><i class="fas fa-blog"></i> Dashboard</a>
+      <li class="navbar-item"><a class="nav-link" href="/investorDashboard"><i class="fas fa-tachometer-alt"></i>
+          Dashboard</a>
       </li>
       <% } %>
     </ul>

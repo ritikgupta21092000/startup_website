@@ -93,6 +93,10 @@ app.get("/investorDashboard", (req, res) => {
   res.render("investor-dashboard", { foundUser: req.session.username, investorName: req.session.investorName });
 });
 
+app.get("/userDashboard", (req, res) => {
+  res.send("Inside User Dashboard Route");
+});
+
 app.get("/investorAppliedProject", (req, res) => {
   Project.find({ "investAmount.investorId": req.session.investorId, isUserApproved: false })
     .populate("investAmount.investorId")
