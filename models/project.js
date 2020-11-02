@@ -12,6 +12,10 @@ const biddingSchema = new mongoose.Schema({
   investorId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: InvestorUser
+  },
+  isUserApproved: {
+    type: Boolean,
+    default: false
   }
 });
 
@@ -25,15 +29,15 @@ const projectSchema = new mongoose.Schema({
   projectUrl: {
     type: String
   },
+  isProjectApproved: {
+    type: Boolean,
+    default: false
+  },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: User
   },
-  investAmount: [biddingSchema],
-  isUserApproved: {
-    type: Boolean,
-    default: false
-  }
+  investAmount: [biddingSchema]
 });
 
 const Project = new mongoose.model("project", projectSchema);

@@ -94,11 +94,11 @@ app.get("/investorDashboard", (req, res) => {
 });
 
 app.get("/userDashboard", (req, res) => {
-  res.send("Inside User Dashboard Route");
+  res.render("user-dashboard", { foundUser: req.session.username, investorName: req.session.investorName });
 });
 
 app.get("/investorAppliedProject", (req, res) => {
-  Project.find({ "investAmount.investorId": req.session.investorId, isUserApproved: false })
+  Project.find({ "investAmount.investorId": req.session.investorId, "investAmount.isUserApproved": false })
     .populate("investAmount.investorId")
     .populate("userId")
     .then(foundDocument => {
@@ -110,7 +110,7 @@ app.get("/investorAppliedProject", (req, res) => {
 });
 
 app.get("/investorApprovedProject", (req, res) => {
-  Project.find({ "investAmount.investorId": req.session.investorId, isUserApproved: true })
+  Project.find({ "investAmount.investorId": req.session.investorId, "investAmount.isUserApproved": true })
     .populate("investAmount.investorId")
     .populate("userId")
     .then(foundDocument => {
@@ -118,6 +118,17 @@ app.get("/investorApprovedProject", (req, res) => {
     })
     .catch(error => {
       console.log(error);
+    });
+});
+
+app.get("/userAllProjects", (req, res) => {
+  Project.find({ userId: req.session.userId })
+    .populate("userId")
+    .populate("investAmount.investorId")
+    .then((foundAllProjects) => {
+      res.render("user-all-projects", { foundAllProjects, foundUser: req.session.username, investorName: req.session.investorName });
+    }).catch((err) => {
+      console.log(err);
     });
 });
 

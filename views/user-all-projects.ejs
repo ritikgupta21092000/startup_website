@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Startup India</title>
+  <%- include ("partials/link.ejs"); -%>
+</head>
+
+<body>
+  <%- include ("partials/navbar.ejs"); -%>
+
+  <table class="table table-striped" style="margin-top: 100px;">
+    <thead>
+      <tr>
+        <th>Sr No</th>
+        <th>Project Name</th>
+        <th>Project Description</th>
+        <th>Project Url</th>
+        <th>Project Approved</th>
+        <th>Operations</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% foundAllProjects.forEach(project => { %>
+      <tr>
+        <td><%= foundAllProjects.indexOf(project) + 1 %> </td>
+        <td><%= project.projectName %> </td>
+        <td><%= project.projectDescription %> </td>
+        <td><%= project.projectUrl %> </td>
+        <% if (project.isProjectApproved) { %>
+        <td>Approved</td>
+        <% } else { %>
+        <td>Pending</td>
+        <% } %>
+        <td><a href="#">Update</a> | <a href="#">Delete</a></td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+</body>
+
+</html>
