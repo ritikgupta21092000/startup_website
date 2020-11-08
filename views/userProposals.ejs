@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Startup India</title>
+  <%- include ("partials/link.ejs"); -%>
+</head>
+
+<body>
+  <%- include ("partials/navbar.ejs"); -%>
+  <div class="fluid-container" style="margin-top: 100px;">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Sr No</th>
+          <th>Project Name</th>
+          <th>Project Description</th>
+          <th>Project Url</th>
+          <th>Total Number of Bids</th>
+          <th>View All Investors</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% foundProposals.forEach(element => { %>
+        <tr>
+          <td><%= foundProposals.indexOf(element) + 1 %> </td>
+          <td><%= element.projectName %> </td>
+          <td><%= element.projectDescription %> </td>
+          <td><a href="<%= element.projectUrl %>"><%= element.projectUrl %></a></td>
+          <td><%= element.investAmount.length %> </td>
+          <td><a href="/bids/<%= element._id %>" role="button" class="btn btn-md btn-outline-primary">View
+              All Bids</a></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+</body>
+
+</html>

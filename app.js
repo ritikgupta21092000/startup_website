@@ -132,6 +132,28 @@ app.get("/userAllProjects", (req, res) => {
     });
 });
 
+app.get("/userProposals", (req, res) => {
+  Project.find({ userId: req.session.userId, isProjectApproved: false })
+    .populate("investAmount.investorId")
+    .then(foundProposals => {
+      res.render("userProposals", { foundProposals: foundProposals, foundUser: req.session.username, investorName: req.session.investorName })
+    })
+    .catch(error => {
+      console.log(error);
+    });
+});
+
+app.get("/bids/:projectId", (req, res) => {
+  const projectId = req.params.projectId;
+  Project.find({ _id: projectId })
+    .populate("investAmount.investorId")
+    .then((foundAllInvestors) => {
+      res.render("viewBids", { foundAllInvestors: foundAllInvestors, foundUser: req.session.username, investorName: req.session.investorName })
+    }).catch((err) => {
+      console.log(err);
+    });
+});
+
 app.get("/logout", (req, res) => {
   req.session.destroy((err) => {
     if (err) {
