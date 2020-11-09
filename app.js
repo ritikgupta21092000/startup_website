@@ -94,7 +94,19 @@ app.get("/investorDashboard", (req, res) => {
 });
 
 app.get("/userDashboard", (req, res) => {
-  res.render("user-dashboard", { foundUser: req.session.username, investorName: req.session.investorName });
+  var count = 0;
+  Project.find({ userId: req.session.userId }, function (err, foundDocument) {
+    if (err) {
+      console.log(err);
+    } else {
+      if (foundDocument) {
+        foundDocument.forEach(element => {
+          count += element.investAmount.length;
+        });
+      }
+    }
+    res.render("user-dashboard", { totalProposals: count, foundUser: req.session.username, investorName: req.session.investorName });
+  });
 });
 
 app.get("/investorAppliedProject", (req, res) => {
@@ -149,6 +161,17 @@ app.get("/bids/:projectId", (req, res) => {
     .populate("investAmount.investorId")
     .then((foundAllInvestors) => {
       res.render("viewBids", { foundAllInvestors: foundAllInvestors, foundUser: req.session.username, investorName: req.session.investorName })
+    }).catch((err) => {
+      console.log(err);
+    });
+});
+
+app.get("/approve/:projectId/investAmount/:investAmountId", (req, res) => {
+  const projectId = req.params.projectId;
+  const investAmountId = req.params.investAmountId;
+  Project.updateOne({ _id: projectId, "investAmount._id": investAmountId }, { $set: { isProjectApproved: true, "investAmount.$.isUserApproved": true } })
+    .then((result) => {
+      res.redirect("/userDashboard");
     }).catch((err) => {
       console.log(err);
     });
