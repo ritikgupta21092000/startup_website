@@ -5,6 +5,8 @@ const mongooose = require("mongoose");
 const session = require("express-session");
 var ObjectId = require("mongoose").Types.ObjectId;
 
+var port = 3000;
+
 const app = express();
 
 app.set("view engine", "ejs");
@@ -299,6 +301,6 @@ app.post("/placeBid", (req, res) => {
   });
 });
 
-app.listen(3000, function () {
-  console.log("Server is running on port 3000");
+app.listen(port, function () {
+  console.log(`Server is running on port ${port}`);
 });
