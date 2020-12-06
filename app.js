@@ -179,6 +179,17 @@ app.get("/approve/:projectId/investAmount/:investAmountId", (req, res) => {
     });
 });
 
+app.get("/project/delete/:projectId", (req, res) => {
+  const projectId = req.params.projectId;
+  Project.findByIdAndDelete(projectId, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.redirect("/userDashboard");
+    }
+  })
+})
+
 app.get("/logout", (req, res) => {
   req.session.destroy((err) => {
     if (err) {

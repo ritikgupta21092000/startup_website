@@ -34,7 +34,8 @@
         <% } else { %>
         <td>Pending</td>
         <% } %>
-        <td><a href="#">Update</a> | <a href="#">Delete</a></td>
+        <td><a href="/project/delete/<%= project._id %> " style="color: black; margin-left: 25px;"><i
+              class="fas fa-trash"></i></a></td>
       </tr>
       <% }) %>
     </tbody>
